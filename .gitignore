@@ -1,0 +1,9 @@
+# hidden files
+.*
+!.gitignore
+
+# generated database
+/chirpstack.sqlite
+
+# binary
+/chirpstack-pg-to-sqlite
