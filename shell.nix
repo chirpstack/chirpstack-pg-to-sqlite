@@ -4,5 +4,7 @@ pkgs.mkShell {
   buildInputs = [
     pkgs.go
     pkgs.opkg-utils
+    pkgs.sqlite
+    pkgs.docker
   ];
 }

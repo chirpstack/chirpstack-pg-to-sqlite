@@ -2,5 +2,5 @@ build:
 	go build
 
 build-gateway-os:
-	GOOS=linux GOARCH=arm CGO=0 go build
+	docker compose run --rm chirpstack-pg-to-sqlite-armv7 go build -ldflags "-linkmode 'external' -extldflags '-static'"
 	cd packaging/gateway-os && ./package.sh 1.0.0

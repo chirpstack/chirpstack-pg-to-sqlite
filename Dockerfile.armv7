@@ -1,0 +1,20 @@
+FROM golang:1.23.2-bookworm
+
+ENV PROJECT_PATH=/workdir
+ENV CC=arm-linux-gnueabihf-gcc
+ENV CXX=arm-linux-gnueabihf-g++
+ENV CGO_ENABLED=1 
+ENV GOOS=linux 
+ENV GOARCH=arm 
+ENV GOARM=7
+
+RUN apt-get update && apt-get install -y \
+  make \
+  git \
+  gcc-arm-linux-gnueabihf \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN git config --global --add safe.directory /workdir
+
+RUN mkdir -p $PROJECT_PATH
+WORKDIR $PROJECT_PATH

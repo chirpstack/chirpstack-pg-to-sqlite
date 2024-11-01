@@ -11,7 +11,7 @@ import (
 	"github.com/jmoiron/sqlx"
 
 	_ "github.com/lib/pq"
-	_ "modernc.org/sqlite"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var (
@@ -56,7 +56,6 @@ func main() {
 		3: fixDateTime,
 	})
 	migrateTableFn("device_profile_template", map[int]func(interface{}) interface{}{
-		0: fixUuid,
 		1: fixDateTime,
 		2: fixDateTime,
 	})
@@ -185,7 +184,7 @@ func getPostgresClient(dsn string) *sqlx.DB {
 }
 
 func getSqliteClient(path string) *sqlx.DB {
-	d, err := sqlx.Open("sqlite", path+"?_pragma=foreign_keys(1)")
+	d, err := sqlx.Open("sqlite3", path+"?_foreign_keys=1")
 	if err != nil {
 		log.Fatal("Open SQLite error", err)
 	}

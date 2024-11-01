@@ -1,0 +1,7 @@
+services:
+  chirpstack-pg-to-sqlite-armv7:
+    build:
+      context: .
+      dockerfile: Dockerfile.armv7
+    volumes:
+      - ./:/workdir
