@@ -30,16 +30,13 @@ cp /opt/$PACKAGE_NAME/chirpstack.empty.sqlite /srv/chirpstack/chirpstack.sqlite
 EOF
 chmod 755 $PACKAGE_DIR/CONTROL/postinst
 
-cat > $PACKAGE_DIR/CONTROL/conffiles << EOF
-EOF
-
 # Files
 mkdir -p $PACKAGE_DIR/opt/$PACKAGE_NAME
 cp ../../chirpstack-pg-to-sqlite $PACKAGE_DIR/opt/$PACKAGE_NAME
 cp ../../chirpstack.empty.sqlite $PACKAGE_DIR/opt/$PACKAGE_NAME
 
 # Package
-opkg-build -o root -g root $PACKAGE_DIR
+opkg-build -c -o root -g root $PACKAGE_DIR
 
 # Cleanup
 rm -rf $PACKAGE_DIR
