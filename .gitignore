@@ -7,3 +7,8 @@
 
 # binary
 /chirpstack-pg-to-sqlite
+
+# build folders
+/packaging/*/package
+/packaging/*/temp
+/packaging/*/*.ipk
