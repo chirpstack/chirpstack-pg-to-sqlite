@@ -25,8 +25,12 @@ EOF
 
 cat > $PACKAGE_DIR/CONTROL/postinst << EOF
 mkdir -p /srv/chirpstack
-cp /opt/$PACKAGE_NAME/chirpstack.empty.sqlite /srv/chirpstack/chirpstack.sqlite
-/opt/$PACKAGE_NAME/chirpstack-pg-to-sqlite -sqlite-path /srv/chirpstack/chirpstack.sqlite
+
+cp /opt/$PACKAGE_NAME/chirpstack.empty.sqlite /tmp/chirpstack.sqlite
+/opt/$PACKAGE_NAME/chirpstack-pg-to-sqlite -sqlite-path /tmp/chirpstack.sqlite
+
+cp /tmp/chirpstack.sqlite /srv/chirpstack/chirpstack.sqlite
+rm /tmp/chirpstack.sqlite
 EOF
 chmod 755 $PACKAGE_DIR/CONTROL/postinst
 
