@@ -138,7 +138,7 @@ func fixDateTime(dt interface{}) interface{} {
 	}
 
 	dtCasted := dt.(time.Time)
-	return dtCasted.Format("2006-01-02 15:04:05")
+	return dtCasted.UTC().Format("2006-01-02 15:04:05")
 }
 
 func fixUuid(id interface{}) interface{} {
